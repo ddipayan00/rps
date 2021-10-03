@@ -9,14 +9,6 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissor_div = document.getElementById("s");
 
-// Proper Name
-const playerFormat = () => {
-    return "Player".fontcolor("green");
-}
-const computerFormat = () => {
-    return "Computer".fontcolor("red");
-}
-
 // Player Choice Name
 const properName = name => {
     if(name === "r") return "Rock";
@@ -31,7 +23,7 @@ const winner = (playerChoice,compChoice) => {
         const audio = new Audio("resourses/audio/winner.mp3");
         audio.play();
         playerScore_span.innerHTML = playerScore;
-        result_div.innerHTML = `${properName(playerChoice)}(${playerFormat()})  beats  ${properName(compChoice)}(${computerFormat()}) You win 🔥`;
+        result_div.innerHTML = `${properName(playerChoice)}(Player)  beats  ${properName(compChoice)}(Computer) You win 🔥`;
     },1000); 
 }
 
@@ -42,7 +34,7 @@ const loser = (playerChoice,compChoice) => {
         const audio = new Audio("resourses/audio/loser.mp3");
         audio.play();
         compScore_span.innerHTML = compScore;
-        result_div.innerHTML = `${properName(playerChoice)}(${playerFormat()})  loses to  ${properName(compChoice)}(${computerFormat()}) You lose 😥`;
+        result_div.innerHTML = `${properName(playerChoice)}(Player)  loses to  ${properName(compChoice)}(Computer) You lose 😥`;
     },1000);
 }
 
@@ -51,7 +43,7 @@ const drawMatch = (playerChoice,compChoice) => {
     setTimeout(() => {
         const audio = new Audio("resourses/audio/drawMatch.mp3");
         audio.play();
-        result_div.innerHTML = `${properName(playerChoice)}(${playerFormat()})  is equal to  ${properName(compChoice)}(${computerFormat()}) It's a draw 🙂`;
+        result_div.innerHTML = `${properName(playerChoice)}(Player)  is equal to  ${properName(compChoice)}(Computer) It's a draw 🙂`;
     },1000);
 }
 
@@ -108,17 +100,17 @@ function game(playerChoice){
     }
 }
 
-
 // Main function
 function main(){
     rock_div.addEventListener('click',() => game("r"));
     paper_div.addEventListener('click',() => game("p"));
     scissor_div.addEventListener('click',() => game("s"));
-    newGame_div.addEventListener('click',() => fun());
-    newGame_div_ok.addEventListener('click',() => fun());
 }
 // Driver Code
 main();
+
+
+// Reset Function
 function myFunction(){
     playerScore = 0;
     compScore = 0;
@@ -126,5 +118,3 @@ function myFunction(){
     compScore_span.innerHTML = compScore;
     result_div.innerHTML = "Result will be here";
 };
-
-
